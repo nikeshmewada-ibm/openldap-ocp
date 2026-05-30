@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openldap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: openldap
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: openldap
+
+    spec:
+      serviceAccountName: openldap-sa
+
+      initContainers:
+      - name: copy-ldif
+        image: registry.access.redhat.com/ubi9/ubi-minimal
+
+        command:
+        - /bin/sh
+        - -c
+        - |
+          cp /configmap/01-init.ldif /bootstrap/
+          chmod 644 /bootstrap/01-init.ldif
+          ls -l /bootstrap
+
+        volumeMounts:
+        - name: ldap-configmap
+          mountPath: /configmap
+
+        - name: ldap-bootstrap
+          mountPath: /bootstrap
+
+      containers:
+      - name: openldap
+        image: docker.io/osixia/openldap:1.5.0
+
+        ports:
+        - containerPort: 389
+        - containerPort: 636
+
+        env:
+        
+        - name: LDAP_ORGANISATION
+          value: "Expert Labs"
+
+        - name: LDAP_DOMAIN
+          value: "expertlabs.ibm.com"
+
+        - name: LDAP_ADMIN_PASSWORD
+          value: "passw0rd"
+
+        - name: LDAP_REMOVE_CONFIG_AFTER_SETUP
+          value: "false"
+
+        volumeMounts:
+        - name: ldap-bootstrap
+          mountPath: /container/service/slapd/assets/config/bootstrap/ldif/custom
+
+        - name: ldap-data
+          mountPath: /var/lib/ldap
+
+        - name: ldap-config
+          mountPath: /etc/ldap/slapd.d
+
+      volumes:
+      - name: ldap-configmap
+        configMap:
+          name: ldap-bootstrap
+
+      - name: ldap-bootstrap
+        emptyDir: {}
+
+      - name: ldap-data
+        persistentVolumeClaim:
+          claimName: openldap-data
+
+      - name: ldap-config
+        persistentVolumeClaim:
+          claimName: openldap-config

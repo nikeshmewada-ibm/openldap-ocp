@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: openldap-nodeport
+  namespace: openldap
+  labels:
+    app.kubernetes.io/name: openldap
+spec:
+  ports:
+    - name: tcp-1389
+      protocol: TCP
+      port: 389
+      targetPort: 389
+      nodePort: 30389
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: openldap

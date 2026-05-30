@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: openldap-svc
+  namespace: openldap
+  labels:
+    app.kubernetes.io/name: openldap
+spec:
+  ports:
+    - name: tcp-389
+      protocol: TCP
+      port: 389
+      targetPort: 389
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app.kubernetes.io/name: openldap
