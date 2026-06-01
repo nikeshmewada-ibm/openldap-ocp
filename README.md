@@ -1,5 +1,4 @@
 # OpenLDAP Server on OpenShift with phpLDAPadmin - Setup Guide
-# Author: Nikesh Mewada
 
 This guide provides step-by-step instructions to deploy an OpenLDAP server on OpenShift and use phpLDAPadmin to browse and manage it.
 
@@ -323,4 +322,5 @@ For issues or questions:
 
 ---
 
+**Author**: Nikesh Mewada
 **Last Updated**: 2026-05-30
