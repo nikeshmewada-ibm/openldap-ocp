@@ -51,7 +51,7 @@ CONTENT.KEYSTORE_PASSWORD="passw0rd"
 
 ## Provide ARCHIVE_USERID used in the ibm-icc-secret secret for the security details of the login credentials for the Content Platform Engine services. This login user ID must have domain-wide read access to all documents to be indexed.
 ## This login user ID must have domain-wide read access to all documents to be indexed.
-CONTENT.ARCHIVE_USER_ID="<Required>"
+CONTENT.ARCHIVE_USER_ID="cp4baadmin"
 
 ## Provide ARCHIVE_PASSWORD used in the ibm-icc-secret secret (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text).
 CONTENT.ARCHIVE_USER_PASSWORD="passw0rd"
