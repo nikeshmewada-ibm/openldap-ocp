@@ -36,7 +36,7 @@ CP4BA.ENABLE_RESTRICTED_INTERNET_ACCESS="false"
 ##           USER Property for FNCM                ##
 ####################################################
 ## Provide the user name for P8Domain. For example: "CEAdmin"
-CONTENT.APPLOGIN_USER="<Required>"
+CONTENT.APPLOGIN_USER="cp4baadmin"
 
 ## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for P8Domain.
 CONTENT.APPLOGIN_PASSWORD="passw0rd"
