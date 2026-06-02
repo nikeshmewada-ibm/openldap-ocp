@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: phpldapadmin
+  namespace: openldap
+  labels:
+    app.kubernetes.io/name: phpldapadmin
 spec:
   replicas: 1
   selector:

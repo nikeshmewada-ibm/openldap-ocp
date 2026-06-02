@@ -2,6 +2,9 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: phpldapadmin
+  namespace: openldap
+  labels:
+    app.kubernetes.io/name: phpldapadmin
 spec:
   to:
     kind: Service

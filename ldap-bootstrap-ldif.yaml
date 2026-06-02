@@ -20,78 +20,78 @@ data:
 
     # Users
 
-    dn: uid=cp4baadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    dn: cn=cp4baadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     objectClass: inetOrgPerson
-    cn: CP4BA Admin
+    objectClass: person
+    cn: cp4baadmin
     sn: Admin
     uid: cp4baadmin
     mail: cp4baadmin@expertlabs.ibm.com
     userPassword: passw0rd
 
-    dn: uid=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    dn: cn=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     objectClass: inetOrgPerson
-    cn: BAW Admin
+    objectClass: person
+    cn: bawadmin
     sn: Admin
     uid: bawadmin
     mail: bawadmin@expertlabs.ibm.com
     userPassword: passw0rd
 
-    dn: uid=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    dn: cn=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     objectClass: inetOrgPerson
-    cn: BAN Admin
+    objectClass: person
+    cn: banadmin
     sn: Admin
     uid: banadmin
     mail: banadmin@expertlabs.ibm.com
     userPassword: passw0rd
 
-    dn: uid=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    dn: cn=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     objectClass: inetOrgPerson
-    cn: FN Admin
+    objectClass: person
+    cn: fnadmin
     sn: Admin
     uid: fnadmin
     mail: fnadmin@expertlabs.ibm.com
     userPassword: passw0rd
 
-    # Group: cp4ba-admins
+    # Group: cp4ba_admins
 
-    dn: cn=cp4ba-admins,ou=groups,dc=expertlabs,dc=ibm,dc=com
+    dn: cn=cp4ba_admins,ou=groups,dc=expertlabs,dc=ibm,dc=com
     objectClass: groupOfNames
-    cn: cp4ba-admins
-    member: uid=ldapadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=cp4baadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    cn: cp4ba_admins
+    member: cn=cp4baadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
 
-    # Group: odm-admins
+    # Group: odm_admins
 
-    dn: cn=odm-admins,ou=groups,dc=expertlabs,dc=ibm,dc=com
+    dn: cn=odm_admins,ou=groups,dc=expertlabs,dc=ibm,dc=com
     objectClass: groupOfNames
-    cn: odm-admins
-    member: uid=ldapadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=cp4baadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    cn: odm_admins
+    member: cn=cp4baadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
 
-    # Group: fnwf-admins
+    # Group: fnwf_admins
 
-    dn: cn=fnwf-admins,ou=groups,dc=expertlabs,dc=ibm,dc=com
+    dn: cn=fnwf_admins,ou=groups,dc=expertlabs,dc=ibm,dc=com
     objectClass: groupOfNames
-    cn: fnwf-admins
-    member: uid=ldapadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=cp4baadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    cn: fnwf_admins
+    member: cn=cp4baadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
 
-    # Group: fnwfcfg-admins
+    # Group: fnwfcfg_admins
 
-    dn: cn=fnwfcfg-admins,ou=groups,dc=expertlabs,dc=ibm,dc=com
+    dn: cn=fnwfcfg_admins,ou=groups,dc=expertlabs,dc=ibm,dc=com
     objectClass: groupOfNames
-    cn: fnwfcfg-admins
-    member: uid=ldapadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=cp4baadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
-    member: uid=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    cn: fnwfcfg_admins
+    member: cn=cp4baadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
