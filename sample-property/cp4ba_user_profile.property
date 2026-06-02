@@ -1,0 +1,209 @@
+####################################################
+##           USER Property for CP4BA               ##
+####################################################
+## Use this parameter to specify the license for the CP4A deployment and
+## the possible values are: non-production and production and if not set, the license will
+## be defaulted to production.  This value could be different from the other licenses in the CR.
+CP4BA.CP4BA_LICENSE="non-production"
+
+## FileNet Content Manager (FNCM) license and possible values are: user, non-production, and production.
+## This value could be different from the rest of the licenses.
+CP4BA.FNCM_LICENSE="non-production"
+
+## Business Automation Workflow (BAW) license and possible values are: user, non-production, and production.
+## This value could be different from the other licenses in the CR.
+CP4BA.BAW_LICENSE="non-production"
+
+## On OCP 3.x and 4.x, the User script will populate these three (3) parameters based on your input for "production" deployment.
+## If you manually deploying without using the User script, then you would provide the different storage classes for the slow, medium
+## and fast storage parameters below.  If you only have 1 storage class defined, then you can use that 1 storage class for all 3 parameters.
+## sc_block_storage_classname is for Zen, Zen requires/recommends block storage (RWO) for metastoreDB
+CP4BA.SLOW_FILE_STORAGE_CLASSNAME="ocs-external-storagecluster-cephfs"
+CP4BA.MEDIUM_FILE_STORAGE_CLASSNAME="ocs-external-storagecluster-cephfs"
+CP4BA.FAST_FILE_STORAGE_CLASSNAME="ocs-external-storagecluster-cephfs"
+CP4BA.BLOCK_STORAGE_CLASS_NAME="ocs-external-storagecluster-ceph-rbd"
+
+## Enable/disable FIPS mode for the deployment (default value is "false").
+## Note: If set as "true", in order to complete enablement of FIPS for CP4BA, please refer to "FIPS wall" configuration in IBM documentation.
+CP4BA.ENABLE_FIPS="false"
+
+## Enable or disable egress access to external systems.
+## true: All CP4A pods will not have access any external systems unless custom, curated egress network policy or polices with specific 'matchLabels' are created. Please refer to documentation for more detail.
+## false: All CP4A pods will have unrestricted network access to external systems.
+CP4BA.ENABLE_RESTRICTED_INTERNET_ACCESS="false"
+
+####################################################
+##           USER Property for FNCM                ##
+####################################################
+## Provide the user name for P8Domain. For example: "CEAdmin"
+CONTENT.APPLOGIN_USER="<Required>"
+
+## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for P8Domain.
+CONTENT.APPLOGIN_PASSWORD="passw0rd"
+
+## Provide a string for ltpaPassword in the ibm-fncm-secret that will be used when creating the ltpakey.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.LTPA_PASSWORD must match BAN.LTPA_PASSWORD)
+CONTENT.LTPA_PASSWORD="passw0rd"
+
+## Provide a string for keystorePassword in the ibm-fncm-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+CONTENT.KEYSTORE_PASSWORD="passw0rd"
+
+## Provide ARCHIVE_USERID used in the ibm-icc-secret secret for the security details of the login credentials for the Content Platform Engine services. This login user ID must have domain-wide read access to all documents to be indexed.
+## This login user ID must have domain-wide read access to all documents to be indexed.
+CONTENT.ARCHIVE_USER_ID="<Required>"
+
+## Provide ARCHIVE_PASSWORD used in the ibm-icc-secret secret (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text).
+CONTENT.ARCHIVE_USER_PASSWORD="passw0rd"
+
+####################################################
+##       USER Property for Content initialization   ##
+####################################################
+## Enable/disable ECM (FNCM) / BAN initialization (e.g., creation of P8 domain, creation/configuration of object stores,
+## creation/configuration of CSS servers, and initialization of Navigator (ICN).
+## The default valuse is "Yes", set "No" to disable.
+CONTENT_INITIALIZATION.ENABLE="Yes"
+
+## user name for GCD administrator, for example, "CEAdmin". This parameter accepts comma-separated lists (without spacing), for example, "CEAdmin1,CEAdmin2"
+CONTENT_INITIALIZATION.LDAP_ADMIN_USER_NAME="cp4baadmin"
+
+## Names of groups containing GCD administrators, for example, "P8Administrators". This parameter accepts comma-separated lists (without spacing), for example, "P8Group1,P8Group2"
+CONTENT_INITIALIZATION.LDAP_ADMINS_GROUPS_NAME="cp4ba_admins"
+
+## user name and group name for object store admin, for example, "CEAdmin" or "P8Administrators". This parameter accepts comma-separated lists (without spacing), for example, "P8Group1,P8Group2"
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_ADMIN_USER_GROUPS="cp4ba_admins"
+
+## Specify whether to enable workflow for the object store, The default value is "Yes"
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_ENABLE_WORKFLOW="Yes"
+
+## Specify a table space for the workflow data.
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_DATA_TBL_SPACE="bawtos_tbs"
+
+## Designate an LDAP group for the workflow admin group.
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_ADMIN_GROUP="fnwf_admins"
+
+## Designate an LDAP group for the workflow config group
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_CONFIG_GROUP="fnwfcfg_admins"
+
+## Provide a name for the connection point. For example: "pe_conn_os1"
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_PE_CONN_POINT_NAME="pe_conn_bawtos"
+
+####################################################
+##       USER Property for BAN   ##
+####################################################
+## Provide the user name for the Navigator administrator. For example: "BANAdmin"
+BAN.APPLOGIN_USER="cp4baadmin"
+
+## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the Navigator administrator.
+BAN.APPLOGIN_PASSWORD="passw0rd"
+
+## Provide a string for ltpaPassword in the ibm-ban-secret that will be used when creating the ltpakey.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text.(NOTES: BAN.LTPA_PASSWORD must match CONTENT.LTPA_PASSWORD)
+BAN.LTPA_PASSWORD="passw0rd"
+
+## Provide a string for keystorePassword in the ibm-ban-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: BAN.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+BAN.KEYSTORE_PASSWORD="passw0rd"
+
+## Provide the user name for jMail used by BAN. For example: "jMailAdmin"
+BAN.JMAIL_USER_NAME="<Optional>"
+
+## Provide the user password for jMail used by BAN.
+BAN.JMAIL_USER_PASSWORD="<Optional>"
+
+####################################################
+##           USER Property for Workflow Runtime        ##
+####################################################
+## Designate an existing LDAP user for the Workflow Server admin user.
+BAW_RUNTIME.ADMIN_USER="cp4baadmin"
+
+###########################################################################################
+##       USER Property for the customized IAM SCIM LDAP attributes for the LDAP (IBM Security Directory Server) configuration       ##
+###########################################################################################
+
+## [NOTES:]
+## For information about SCIM parameters used by the CP4BA deployment, from https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/24.0.0, navigate to Reference --> CP4BA multi-pattern deployment reference --> Custom resource configuration parameters --> Shared configuration parameters --> LDAP Configuration
+## For information about LDAP attributes, you can use the ldapsearch tool or other LDAP browser utilitise.
+## How to use ldapsearch tool to get LDAP attributes, you can refer below link: 
+## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.6?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
+
+## Provide the user unique id attribute, the default value "ibm-entryuuid" for "IBM Security Directory Server".
+## This attribute MUST be set to an LDAP attribute that is unique and immutable.
+SCIM.USER_UNIQUE_ID_ATTRIBUTE="uid"
+
+## Provide the user name attribute, the default value "uid" for "IBM Security Directory Server".
+SCIM.USER_NAME_ATTRIBUTE="uid"
+
+## Provide the user principal name attribute, the default value "uid" for "IBM Security Directory Server".
+SCIM.USER_PRINCIPAL_NAME_ATTRIBUTE="uid"
+
+## Provide the user display name attribute, the default value "cn" for "IBM Security Directory Server".
+SCIM.USER_DISPLAY_NAME_ATTRIBUTE="cn"
+
+## Provide the user given name attribute, the default value "cn" for "IBM Security Directory Server".
+SCIM.USER_GIVEN_NAME_ATTRIBUTE="cn"
+
+## Provide the user family name attribute, the default value "sn" for "IBM Security Directory Server".
+SCIM.USER_FAMILY_NAME_ATTRIBUTE="sn"
+
+## Provide the user full name attribute, the default value "cn" for "IBM Security Directory Server".
+SCIM.USER_FULL_NAME_ATTRIBUTE="cn"
+
+## Provide the user external id attribute, the default value "dn" for "IBM Security Directory Server".
+SCIM.USER_EXTERNAL_ID_ATTRIBUTE="dn"
+
+## Provide the user emails attribute, the default value "mail" for "IBM Security Directory Server".
+SCIM.USER_EMAILS_ATTRIBUTE="mail"
+
+## Provide the user created attribute, the default value "createTimestamp" for "IBM Security Directory Server".
+SCIM.USER_CREATED_ATTRIBUTE="createTimestamp"
+
+## Provide the user lastModified attribute, the default value "modifyTimestamp" for "IBM Security Directory Server".
+SCIM.USER_LASTMODIFIED_ATTRIBUTE="modifyTimestamp"
+
+## Provide the user phoneNumbers value (first), the default value "mobile" for "IBM Security Directory Server".
+SCIM.USER_PHONENUMBERS_VALUE1="mobile"
+
+## Provide the user phoneNumbers type (first), the default value "mobile" for "IBM Security Directory Server".
+SCIM.USER_PHONENUMBERS_TYPE1="mobile"
+
+## Provide the user phoneNumbers value (second), the default value "telephoneNumber" for "IBM Security Directory Server".
+SCIM.USER_PHONENUMBERS_VALUE2="telephoneNumber"
+
+## Provide the user phoneNumbers type (second), the default value "work" for "IBM Security Directory Server".
+SCIM.USER_PHONENUMBERS_TYPE2="work"
+
+## Provide the user object class attribute, the default value "person" for "IBM Security Directory Server".
+SCIM.USER_OBJECT_CLASS_ATTRIBUTE="person"
+
+## Provide the user groups attribute, the default value "memberOf" for "IBM Security Directory Server".
+SCIM.USER_GROUPS_ATTRIBUTE="memberOf"
+
+## Provide the group unique id attribute, the default value "ibm-entryuuid" for "IBM Security Directory Server".
+## This attribute MUST be set to an LDAP attribute that is unique and immutable.
+SCIM.GROUP_UNIQUE_ID_ATTRIBUTE="uid"
+
+## Provide the group name attribute, the default value "cn" for "IBM Security Directory Server".
+SCIM.GROUP_NAME_ATTRIBUTE="cn"
+
+## Provide the group principal name attribute, the default value "cn" for "IBM Security Directory Server".
+SCIM.GROUP_PRINCIPAL_NAME_ATTRIBUTE="cn"
+
+## Provide the group display name attribute, the default value "cn" for "IBM Security Directory Server".
+SCIM.GROUP_DISPLAY_NAME_ATTRIBUTE="cn"
+
+## Provide the group external id attribute, the default value "dn" for "IBM Security Directory Server".
+SCIM.GROUP_EXTERNAL_ID_ATTRIBUTE="dn"
+
+## Provide the group created attribute, the default value "createTimestamp" for "IBM Security Directory Server".
+SCIM.GROUP_CREATED_ATTRIBUTE="createTimestamp"
+
+## Provide the group lastModified attribute, the default value "modifyTimestamp" for "IBM Security Directory Server".
+SCIM.GROUP_LASTMODIFIED_ATTRIBUTE="modifyTimestamp"
+
+## Provide the group object class attribute, the default value "groupOfUniqueNames" for "IBM Security Directory Server".
+SCIM.GROUP_OBJECT_CLASS_ATTRIBUTE="groupOfNames"
+
+## Provide the group members attribute, the default value "uniqueMember" for "IBM Security Directory Server".
+SCIM.GROUP_MEMBERS_ATTRIBUTE="member"
+

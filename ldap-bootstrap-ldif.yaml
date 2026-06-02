@@ -56,6 +56,15 @@ data:
     mail: fnadmin@expertlabs.ibm.com
     userPassword: passw0rd
 
+    dn: cn=odmadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    objectClass: inetOrgPerson
+    objectClass: person
+    cn: odmadmin
+    sn: Admin
+    uid: odmadmin
+    mail: odmadmin@expertlabs.ibm.com
+    userPassword: passw0rd
+
     # Group: cp4ba_admins
 
     dn: cn=cp4ba_admins,ou=groups,dc=expertlabs,dc=ibm,dc=com
@@ -65,6 +74,7 @@ data:
     member: cn=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     member: cn=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     member: cn=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=odmadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
 
     # Group: odm_admins
 
@@ -75,6 +85,7 @@ data:
     member: cn=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     member: cn=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     member: cn=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=odmadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
 
     # Group: fnwf_admins
 
@@ -85,6 +96,7 @@ data:
     member: cn=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     member: cn=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     member: cn=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=odmadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
 
     # Group: fnwfcfg_admins
 
@@ -95,3 +107,4 @@ data:
     member: cn=bawadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     member: cn=banadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
     member: cn=fnadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
+    member: cn=odmadmin,ou=users,dc=expertlabs,dc=ibm,dc=com
